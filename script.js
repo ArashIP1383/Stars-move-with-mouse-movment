@@ -56,5 +56,29 @@ function recycleStart(star){
         } else{
             axis = Math.random() < vy / (vx + vy) ? 'v' : 'h';
         }
+
+        if(axis === 'h'){
+            direction = velocity.x > 0 ? 'l' : 'r';
+        }else{
+            direction = velocity.y > 0 ? 't' : 'b';
+        }
+    }
+
+    star.z = starMinScale + Math.random() * ( 1 - starMinScale);
+
+    if(direction === 'z'){
+        star.z = 0.1
+        star.x = Math.random() * width;
+        star.y = Math.random() * height;
+    } else if(direction ==='r'){
+        star.x = width + overflowThreshold;
+        star.y = height * Math.random();
+    } else if(direction === 't'){
+        star.x = width * Math.random();
+        star.y = -overflowThreshold;
+    } else if(direction === 'b'){
+        star.x = width * Math.random();
+        star.y = height + overflowThreshold;
     }
 }
+
